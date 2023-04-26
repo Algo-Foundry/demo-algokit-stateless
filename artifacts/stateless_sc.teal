@@ -1,0 +1,17 @@
+#pragma version 8
+txn RekeyTo
+global ZeroAddress
+==
+txn CloseRemainderTo
+global ZeroAddress
+==
+&&
+txn Amount
+int 1000000
+<=
+&&
+txn Receiver
+addr U2C455RC4GUXJCLBLMKPQ4WOYDG3HQNUYDXKTQQQGIC67REIA7CRBRNID4
+==
+&&
+return

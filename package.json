@@ -1,0 +1,12 @@
+{
+  "name": "demo-algokit-stateless",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Algo-Foundry/demo-algokit-stateless.git",
+  "author": "Charlie Kong <charlie@algofoundry.studio>",
+  "license": "MIT",
+  "dependencies": {
+    "algosdk": "^2.2.0",
+    "dotenv": "^16.0.3"
+  }
+}
