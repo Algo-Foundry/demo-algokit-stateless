@@ -60,6 +60,12 @@ const fundAccount = async (receiver, amount) => {
     Buffer.from(compiledProgram.result, "base64")
   );
   const lsig = new algosdk.LogicSigAccount(programBytes);
+
+  // balance before
+  const balanceBefore = await algodClient
+    .accountInformation(lsig.address())
+    .do();
+
   await fundAccount({ addr: lsig.address() }, 1e7);
   console.log("Contract account address:", lsig.address());
 
@@ -80,8 +86,10 @@ const fundAccount = async (receiver, amount) => {
   await submitToNetwork(lstx.blob);
 
   // check contract account balance
-  contractAccountObj = await algodClient
+  const balanceAfter = await algodClient
     .accountInformation(lsig.address())
     .do();
-  console.log("Contract account balance:", contractAccountObj.amount);
+
+  // remaining balance = 10_000_000 - 1_000_000 - 1000 = 8_999_000 mA
+  console.log("Remaining Balance:", balanceAfter.amount - balanceBefore.amount);
 })();
